@@ -1,0 +1,12 @@
+import { Router } from "express";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { protect } from "../middleware/auth.js";
+import { createReturnRequest, listReturnRequests, listUsers, listConversation, sendMessage } from "../controllers/commerceController.js";
+const router = Router();
+router.use(protect);
+router.post("/requests", asyncHandler(createReturnRequest));
+router.get("/requests", asyncHandler(listReturnRequests));
+router.get("/people", asyncHandler(listUsers));
+router.get("/messages/:userId", asyncHandler(listConversation));
+router.post("/messages/:userId", asyncHandler(sendMessage));
+export default router;

@@ -1,0 +1,143 @@
+.prepcycle-owl-region {
+  position: fixed;
+  right: 24px;
+  bottom: 20px;
+  width: 320px;
+  height: 130px;
+  pointer-events: none;
+  z-index: 60;
+  overflow: visible;
+}
+
+/* The track is the single moving container: quote + owl move together */
+.prepcycle-owl-track {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  will-change: transform;
+}
+
+.prepcycle-owl-quote {
+  position: relative;
+  bottom: 8px;
+  margin-bottom: 10px;
+  min-width: 170px;
+  max-width: 220px;
+  background: #ffffff;
+  color: #1f2430;
+  font-size: 13px;
+  line-height: 1.35;
+  font-weight: 500;
+  padding: 10px 12px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(20, 24, 40, 0.14);
+  border: 1px solid #e6e9f2;
+  transform: translateX(-78px);
+}
+
+.prepcycle-owl-quote::after {
+  content: "";
+  position: absolute;
+  bottom: -7px;
+  left: 96px;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  border-right: 1px solid #e6e9f2;
+  border-bottom: 1px solid #e6e9f2;
+  transform: rotate(45deg);
+}
+
+.prepcycle-owl-offline-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 6px;
+  border-radius: 50%;
+  background: #e0a13a;
+  vertical-align: middle;
+}
+
+.prepcycle-owl-figure {
+  width: 64px;
+  height: 64px;
+  transition: transform 0.15s linear;
+}
+
+.prepcycle-owl-figure.facing-left {
+  transform: scaleX(-1);
+}
+
+.prepcycle-owl-svg {
+  display: block;
+  filter: drop-shadow(0 4px 6px rgba(20, 24, 40, 0.18));
+}
+
+/* Subtle body bob while walking */
+.prepcycle-owl-figure.walking .owl-body {
+  animation: owl-bob 0.6s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+.prepcycle-owl-figure.walking .owl-cap {
+  animation: owl-bob 0.6s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+
+.prepcycle-owl-figure.walking .owl-wing-left {
+  animation: owl-wing-left 0.6s ease-in-out infinite;
+  transform-origin: 27px 52px;
+}
+
+.prepcycle-owl-figure.walking .owl-wing-right {
+  animation: owl-wing-right 0.6s ease-in-out infinite;
+  transform-origin: 73px 52px;
+}
+
+.prepcycle-owl-figure.walking .owl-foot-left {
+  animation: owl-foot-left 0.6s ease-in-out infinite;
+  transform-origin: 40px 88px;
+}
+
+.prepcycle-owl-figure.walking .owl-foot-right {
+  animation: owl-foot-right 0.6s ease-in-out infinite;
+  transform-origin: 60px 88px;
+}
+
+@keyframes owl-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes owl-wing-left {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-12deg); }
+}
+
+@keyframes owl-wing-right {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(12deg); }
+}
+
+@keyframes owl-foot-left {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-2px) rotate(8deg); }
+}
+
+@keyframes owl-foot-right {
+  0%, 100% { transform: translateY(-2px) rotate(-8deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+}
+
+@media (max-width: 480px) {
+  .prepcycle-owl-region {
+    right: 10px;
+    bottom: 12px;
+    width: 220px;
+  }
+  .prepcycle-owl-quote {
+    max-width: 170px;
+    font-size: 12px;
+  }
+}

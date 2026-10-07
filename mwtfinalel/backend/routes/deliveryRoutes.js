@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { protect, roleOnly } from "../middleware/auth.js";
+import { deliveryOrders, deliverySetStatus, deliveryReturns, deliveryUpdateReturn } from "../controllers/commerceController.js";
+const router = Router();
+router.use(protect, roleOnly("delivery"));
+router.get("/orders", asyncHandler(deliveryOrders));
+router.get("/returns", asyncHandler(deliveryReturns));
+router.patch("/returns/:id", asyncHandler(deliveryUpdateReturn));
+router.patch("/orders/:id/status", asyncHandler(deliverySetStatus));
+export default router;
